@@ -1,11 +1,12 @@
 import requests, bs4, spotipy; from spotipy.oauth2 import SpotifyClientCredentials;
+import api_credentials
 
 GETTING_AUTH = False
 
 token = 'BQAw3v3_hOfpAJ2W983YAWaiJLXxNy0h1RER266g9Ad0QANvKqDbOiIAEZ2aqyMkNvH4fN-T4CeUGSVgg0lBBahcnYKCS0APFexSu-bpsoZ5onfJPcNm3axiSBblY0Ui8CWJg78NxyFYsXDeK571EM-dSABHxZHYCLQtpp-BwfqBrwfzniV5i48hcNW1pNzQ8z9SJ0r9YDpGcecvjacAwsXvyVtgeyJSDgTh1JQOKQ'
 refresh_token = 'AQCbtQl1wAbv4zBkAJukr0_xpAZWqANBIwkwC_3tsHCI6pNSupLR0VyreL0HpllvPdDl4BJsbDHMbmpbIYS-3VLzQFjnVQtQy4CeRLzQhlGcQGvEt7FLMvNYMzds8IH-dBE'
 
-my_spotify_user_id = '31sdxydrcqxxljkculegb7yf3mz4'
+my_spotify_user_id = api_credentials.spotify_user_id
 
 headers = {'Authorization': f'Bearer {token}'}
 
@@ -24,8 +25,9 @@ def main():
     add_songs_to_playlist(songs, playlist_id)
 
 
-def spotify_auth():
-    sp = spotipy.oauth2.SpotifyOAuth(client_id='7358f96b2f244982ae0227ba3f900528', client_secret='aa680c3f9de44be691d091a0a48ec8c1', redirect_uri='https://example.com', scope="playlist-modify-private")
+def spotify_auth():        
+
+    sp = spotipy.oauth2.SpotifyOAuth(api_credentials.SPOTIFY_CLIENT_ID, api_credentials.SPOTIFY_CLIENT_SECRET, redirect_uri='https://example.com', scope="playlist-modify-private")
     data = sp.get_access_token(sp.get_authorization_code())
     token = data['access_token']
     refresh_token = data['refresh_token']

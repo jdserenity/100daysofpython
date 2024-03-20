@@ -1,13 +1,10 @@
-import datetime as dt
-import smtplib
-import random
+import datetime as dt; import smtplib, random; import confidential
 
-my_email = 'jdangelorg@gmail.com'
-password = 'uIrb2NO7q#jjvY1SvSumVjzObQpEPv&3pb6FhDlAswiVY&Y9S$wgHj*w*dJZt&KrtM7%9%1z*yuKPmP7Oe$3PtfFrMdbJJUpXLW'
-to_email = 'pythontest_michaelsmith100@yahoo.com'
+my_email = confidential.MY_EMAIL
+to_email = confidential.YAHOO_TEST_EMAIL
 msg = 'Hello'
 
-app_password = 'fgky kaxl sdjh ahsj'
+app_password = confidential.APP_PASSWORD
 
 now = dt.datetime.now()
 
